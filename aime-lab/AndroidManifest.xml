@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.stellium.aimelab">
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-feature android:name="android.hardware.nfc.hcef" android:required="true" />
+    <application android:label="Aime Mobile Lab" android:theme="@android:style/Theme.Material.Light.NoActionBar" android:allowBackup="false" android:supportsRtl="true">
+        <activity android:name=".LabActivity" android:exported="true">
+            <intent-filter><action android:name="android.intent.action.MAIN" /><category android:name="android.intent.category.LAUNCHER" /></intent-filter>
+        </activity>
+        <service android:name=".Mobile14Service" android:exported="true" android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter><action android:name="android.nfc.cardemulation.action.HOST_NFCF_SERVICE" /></intent-filter>
+            <meta-data android:name="android.nfc.cardemulation.host_nfcf_service" android:resource="@xml/mobile14" />
+        </service>
+        <service android:name=".Mobile17Service" android:exported="true" android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter><action android:name="android.nfc.cardemulation.action.HOST_NFCF_SERVICE" /></intent-filter>
+            <meta-data android:name="android.nfc.cardemulation.host_nfcf_service" android:resource="@xml/mobile17" />
+        </service>
+        <service android:name=".ControlService" android:exported="true" android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter><action android:name="android.nfc.cardemulation.action.HOST_NFCF_SERVICE" /></intent-filter>
+            <meta-data android:name="android.nfc.cardemulation.host_nfcf_service" android:resource="@xml/control" />
+        </service>
+    </application>
+</manifest>
